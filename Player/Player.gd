@@ -6,6 +6,9 @@ const FRICTION = 500
 
 var velocity = Vector2.ZERO
 
+# Setting a reference to the animationPlayer function (underneath the player)
+onready var animationPlayer = $AnimationPlayer
+
 # This function is called everytime the physics would update.
 # Delta -> heeft de waarde die de waarde heeft van hoelang de vorige zelfde actie heeft.
 func _physics_process(delta):
@@ -18,9 +21,14 @@ func _physics_process(delta):
 	input_vector = input_vector.normalized()
 	
 	if(input_vector != Vector2.ZERO):
+		if(input_vector.x > 0):
+			animationPlayer.play("RunRight")
+		else: 
+			animationPlayer.play("RunLeft")
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 		print(velocity)
 	else:
+		animationPlayer.play("IdleRight")
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	
 	velocity = move_and_slide(velocity)
