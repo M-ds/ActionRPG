@@ -1,40 +1,27 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://World/Bush.png" type="Texture" id=1]
-[ext_resource path="res://Player/Player.png" type="Texture" id=2]
-[ext_resource path="res://Player/Player.gd" type="Script" id=3]
+[ext_resource path="res://World/Bush.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 3.4563
-height = 5.51869
+[node name="World" type="YSort"]
 
-[node name="World" type="Node2D"]
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 160, 72 )
 
-[node name="Bush" type="Sprite" parent="."]
-position = Vector2( 33.159, 26.4537 )
-scale = Vector2( 0.842154, 0.807077 )
-texture = ExtResource( 1 )
+[node name="Bush" parent="." instance=ExtResource( 1 )]
+position = Vector2( 56, 56 )
 
-[node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 102, 65.1709 )
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_group_": true
-}
+[node name="Bush2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 88, 136 )
 
-[node name="Sprite" type="Sprite" parent="Player"]
-texture = ExtResource( 2 )
-hframes = 60
+[node name="Bush3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 16, 112 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2( -0.314987, 9.13443 )
-rotation = -1.5708
-shape = SubResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
+[node name="Bush4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 176, 136 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Bush5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 264, 104 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PoolVector2Array( 0, 0, 40, 0, 24, 40, 48, 64, 16, 112, 40, 144, 64, 120, 80, 144, 176, 120, 208, 144, 240, 96, 200, 48, 240, 0, 248, 64, 248, 152, 160, 176, 104, 168, 16, 160, 0, 120, 16, 72, 0, 56 )
+[node name="Bush6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 168, 24 )
